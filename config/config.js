@@ -8,7 +8,7 @@ var config = {
     app: {
       name: 'wdi-express'
     },
-    port: process.env.PORT || 3000,
+    port: 3000,
     db: 'mongodb://localhost/wdi-express-development'
   },
 
@@ -17,7 +17,7 @@ var config = {
     app: {
       name: 'wdi-express'
     },
-    port: process.env.PORT || 3000,
+    port: 3000,
     db: 'mongodb://localhost/wdi-express-test'
   },
 
@@ -26,9 +26,8 @@ var config = {
     app: {
       name: 'wdi-express'
     },
-    port: process.env.PORT || 3000,
-    var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/wdi-express-production'
-    mongoose.connect(mongoUri);
+    port: (process.env.PORT || 3000),
+    db: process.env.MONGOLAB_URI
   }
 };
 
