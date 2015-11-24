@@ -2,6 +2,7 @@ var express  = require ('express');
 var router   = express.Router();
 var mongoose = require ('mongoose');
 var Boat     = require ('../../models/boat');
+var Booking  = require ('../../models/booking');
 
 module.exports = function (app) {
   app.use('/', router);
@@ -63,36 +64,36 @@ router.route('/api/boats/:id')
 
   // update the boat with this id (accessed at PUT http://localhost:3000/api/my/boats/:id)
   .put(authenticatedUser, function(req, res) {
-    Boat.findById(req.params.id, function(err, boat) {
-      if (err) {
-        res.send(err);
-      }
-
       // check that user_id of boat is current user
       // var params = req.body.boat;
-      if (req.body.boat.user_id !== req.user) {
-        res.send(err);
-      }
-      else {
-        if (req.body.boat.name) boat.name = req.body.boat.name;  // update the boat's info
+      // if (req.body.boat.user_id !== req.user) {
+      //   res.send(err);
+      // }
+      // else {
+        console.log(req.body.boat);
 
-        // save the boat
-        boat.save(function(err) {
+        Boat.findByIdAndUpdate(req.params.id, req.body.boat, function (err, boat){
           if (err) {
             res.send(err);
           }
           else {
-            res.json({ message: 'Boat updated!' });
+            res.json({message: "Boat updated!"});
           }
         });
+      // }
+    })
+
+  // delete the boat with this id (accessed at DELETE http://localhost:3000/api/my/boats/:id)
+  .delete(function(req, res) {
+    Boat.findByIdAndRemove(req.params.id, function(err, boat) {
+      if (err) {
+        res.send(err);
+      }
+      else {
+        res.json({ message: "Boat has been deleted" });
       }
     });
   });
-
-// Boat.findByIdAndUpdate(req.params.boat_id,{$set:req.body}, function(err, boat){
-//   if (err)...
-// })
-
 
 router.route('/api/my/boats')
 // INDEX get all of my boats (accessed at GET http://localhost:3000/api/my/boats)
@@ -111,24 +112,80 @@ router.route('/api/my/boats')
 router.route('/api/my/boats/:id')
   // SHOW (accessed at GET http://localhost:3000/api/my/boats/:id)
   .get(authenticatedUser, function(req, res) {
-    Boat.findById((req.params.id), function(err, boat) {
+    Boat.findById(req.params.id, function(err, boat) {
       if (err) {
         res.send(err);
       }
       else {
-        res.json(boat)
+        res.json(boat);
+      }
+    });
+  });
+
+router.route('/api/my/bookings')
+  .get(authenticatedUser, function(req, res) {
+    Booking.find({user_id: req.user}, function(err, booking) {
+      if (err) {
+        res.send(err);
+      }
+      else {
+        res.json(bookings)
       }
     });
   })
 
-  // delete the boat with this id (accessed at DELETE http://localhost:3000/api/my/boats/:id)
-    .delete(function(req, res) {
-      Boat.remove({
-        _id: req.params.boat_id
-      }, function(err, boat) {
-        if (err)
-          res.send(err);
+  .post(authenticatedUser, function(req, res) {
+    var params = req.body.booking;
+    params.user_id = req.user._id;
+    Booking.create(params, function(err, booking) {
+      if (err) {
+        res.send(err);
+      }
+      else {
+        res.json(booking);
+      }
+    })
+  });
 
-        res.json({ message: 'Successfully deleted' });
-      });
+router.route('/api/my/bookings/:id')
+  .get(authenticatedUser, function(req, res) {
+    Booking.find(req.params.id, function(err, boat) {
+      if (err) {
+        res.send(err);
+      }
+      else if (booking.user_id != req.user) {
+        res.send(err);
+      }
+      else {
+        res.json(booking);
+      }
     });
+  })
+
+  .put(authenticatedUser, function(req, res) {
+    Booking.findByIdAndUpdate(req.params.id, req.body.booking, function(err, boat) {
+      if (err) {
+        res.send(err);
+      }
+      else if (booking.user_id != req.user) {
+        res.send(err);
+      }
+      else {
+        res.json({message: "Booking has been updated!"});
+      }
+    });
+  })
+
+  .delete(authenticatedUser, function(req, res) {
+    Booking.findByIdAndRemove(req.params.id, function(err, booking) {
+      if (err) {
+        res.send(err);
+      }
+      else if (booking.user_id != req.user) {
+        res.send(err);
+      }
+      else {
+        res.json({message: "Booking has been deleted!"});
+      }
+    })
+  });
