@@ -3,6 +3,7 @@ var bcrypt   = require('bcrypt');
 var Schema   = mongoose.Schema;
 
 var UserSchema = new Schema({
+  boats : [{ type: Schema.Types.ObjectId, ref: 'Boats'}],
   local: {
     name:     { type: String },
     email:    { type: String },
