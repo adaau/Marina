@@ -1,19 +1,25 @@
 var mongoose = require('mongoose');
+var User     = require ('./user');
+var Booking  = require ('./booking');
+var Schema   = mongoose.Schema;
 
-var boatSchema = new mongoose.Schema ({
+var boatSchema = new Schema ({
   name        : { type: String, required: true },
   type        : { type: String, required: true },
   capacity    : { type: Number, min: 1, required: true },
+  address     : { type: String, required: true },
+  longitude   : Number,
+  latitude    : Number,
   make        : String,
   length      : Number,
   year        : { type: Number, min: 1980, max: 2016 },
-  photoUrl    : { type: String, required: true }
+  photoUrl    : { type: String, required: true },
+  user_id     : [{ type: Schema.Types.ObjectId, ref: 'User'}],
+  booking_id  : [{ type: Schema.Types.ObjectId, ref: 'Booking'}]
 });
 
 boatSchema.methods.showPhoto = function() {
   return '/img/' + this.photoUrl;
 };
 
-var Boat = mongoose.model('Boat', boatSchema);
-
-module.exports = Boat;
+module.exports = mongoose.model('Boat', boatSchema);
