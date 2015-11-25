@@ -6,25 +6,25 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'wdi-express'
+      name: 'marina'
     },
     port: 3000,
-    db: 'mongodb://localhost/wdi-express-development'
+    db: 'mongodb://localhost/marina-development'
   },
 
   test: {
     root: rootPath,
     app: {
-      name: 'wdi-express'
+      name: 'marina'
     },
     port: 3000,
-    db: 'mongodb://localhost/wdi-express-test'
+    db: 'mongodb://localhost/marina-test'
   },
 
   production: {
     root: rootPath,
     app: {
-      name: 'wdi-express'
+      name: 'marina'
     },
     port: (process.env.PORT || 3000),
     db: process.env.MONGOLAB_URI
