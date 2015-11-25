@@ -44,7 +44,7 @@ module.exports = function(passport) {
     });
   }));
 
-  passport.use('local-signin', new LocalStrategy({
+  passport.use('local-login', new LocalStrategy({
     usernameField : 'email',
     passwordField : 'password',
     passReqToCallback : true
@@ -54,11 +54,11 @@ module.exports = function(passport) {
       if (err) return callback(err);
 
        // If no user is found
-      if (!user) return callback(null, false, req.flash('signinMessage', 'No user found.'));
+      if (!user) return callback(null, false, req.flash('loginMessage', 'No user found.'));
 
       // Wrong password
       if (!user.validPassword(password)) {
-        return callback(null, false, req.flash('signinMessage', 'Oops! Wrong password.'));
+        return callback(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
       }
 
       return callback(null, user);
@@ -68,7 +68,7 @@ module.exports = function(passport) {
   passport.use('facebook', new FacebookStrategy({
     clientID        : process.env.FACEBOOK_API_KEY,
     clientSecret    : process.env.FACEBOOK_API_SECRET,
-    callbackURL     : 'http://localhost:3000/auth/facebook/callback',
+    callbackURL     : process.env.FACEBOOK_CALLBACK || 'http://localhost:3000/auth/facebook/callback',
     enableProof     : true,
     profileFields   : ['name', 'emails']
   }, function(access_token, refresh_token, profile, done) {

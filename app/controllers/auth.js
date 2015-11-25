@@ -20,15 +20,15 @@ router.post('/signup', function (req, res, next) {
     failureFlash: true })(req, res, next);
 });
 
-router.get('/signin', function (req, res, next) {
-  res.render('auth/signin.ejs', { message: req.flash('signinMessage') });
+router.get('/login', function (req, res, next) {
+  res.render('auth/login.ejs', { message: req.flash('loginMessage') });
 });
 
 // SIGN-IN: Authenticate the user
-router.post("/signin", function (req, res, next) {
-  passport.authenticate('local-signin', {
+router.post("/login", function (req, res, next) {
+  passport.authenticate('local-login', {
     successRedirect: '/',
-    failureRedirect: '/signin',
+    failureRedirect: '/login',
     failureFlash: true })(req, res, next);
 });
 
