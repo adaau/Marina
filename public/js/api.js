@@ -22,6 +22,14 @@ var API_WRAPPER = function() {
     });
   };
 
+  this.createBoat = function(params) {
+    return $.ajax({
+      url:    this.URL_BASE + "/api/boats",
+      method: "POST",
+      data: params
+    });
+  };
+
 };
 
 var API = new API_WRAPPER();
