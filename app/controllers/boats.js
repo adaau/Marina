@@ -1,6 +1,6 @@
-var express  = require('express');
-var router   = express.Router();
-var mongoose = require('mongoose');
+var express         = require('express');
+var router          = express.Router();
+var mongoose        = require('mongoose');
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
 var passport        = require('passport');
@@ -36,11 +36,5 @@ router.get('/boats/:id', function(req, res, next) {
 router.get('/boats/:id/edit', authenticatedUser, function(req, res, next) {
   var boatId = req.params.id;
   res.render('boats/edit');
-});
-
-router.get('/boats/:id/delete', authenticatedUser, function(req, res, next) {
-  var boatId = req.params.id;
-  console.log("deleted!");
-  res.render('boats/index');
 });
 

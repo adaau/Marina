@@ -51,6 +51,14 @@ var API_WRAPPER = function() {
       method: "GET"
     });
   };
+
+  this.getMyBooking = function() {
+    return $.ajax({
+      url:    this.URL_BASE + "/api/my/bookings/" + bookingId,
+      method: "GET"
+    });
+  };
+
 };
 
 var API = new API_WRAPPER();

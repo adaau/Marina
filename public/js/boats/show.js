@@ -2,7 +2,7 @@ $(function() {
   var boatId = window.location.pathname.split("/")[2];
 
   API.getBoat(boatId).then(function(boat) {
-    $("#show-name").append(
+    $("#show-boat").append(
       '<h1>' + boat.name + '</h1>' +
       // '<div class="container-img">' +
       //   '<img src="'boat.showPhoto()'">' +
@@ -23,9 +23,9 @@ $(function() {
     })
     $("#btn-delete-boat").on('submit', function (e) {
       e.preventDefault();
-      window.location.href = "/boats/" + boat._id + "/delete";
-      })
-
-
+      API.deleteBoat(boat._id).then(function(data){
+        window.location.href = "/boats";
+      }, errorHandling);
+    })
   }, errorHandling);
 });

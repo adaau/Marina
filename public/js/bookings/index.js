@@ -5,7 +5,7 @@ $(function() {
         '<li>' +
           '<div class="row col-xs-12">' +
             '<div class="container-info">' +
-              '<h5><a href="/bookings/'+ booking._id + '">' + booking.name + '</a></h5>' +
+              '<h5><a href="/my/bookings/'+ booking._id + '">' + booking.date + '</a></h5>' +
             '</div>' +
           '</div>' +
         '</li>')

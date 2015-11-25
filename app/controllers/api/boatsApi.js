@@ -15,7 +15,7 @@ function authenticatedUser(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    return res.json({message: "Please Login"});
+    return res.status(401).json({message: "Please Login"});
   }
 }
 
@@ -94,7 +94,9 @@ router.route('/api/boats/:id')
 
   // delete the boat with this id (accessed at DELETE http://localhost:3000/api/my/boats/:id)
   .delete(authenticatedUser, function(req, res) {
+    console.log("delete")
     Boat.findOneAndRemove({_id: req.params.id, user_id: req.user._id}, function (err, boat) {
+      console.log(boat);
       if (err) {
         res.send(err);
       }
