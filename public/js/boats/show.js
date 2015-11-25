@@ -1,5 +1,5 @@
 $(function() {
-  var boatId = window.location.pathname.split("/")[2]
+  var boatId = window.location.pathname.split("/")[2];
 
   API.getBoat(boatId).then(function(boat) {
     $("#show-name").append(
@@ -15,6 +15,17 @@ $(function() {
         '<li> Year: '     + boat.year + '</li>' +
         '<li> Price: '    + boat.price + '</li>' +
       '</ul>'
-      )
+    );
+    $("#btn-edit-boat").on('submit', function (e) {
+      e.preventDefault();
+      window.location.href = "/boats/" + boat._id + "/edit";
+
+    })
+    $("#btn-delete-boat").on('submit', function (e) {
+      e.preventDefault();
+      window.location.href = "/boats/" + boat._id + "/delete";
+      })
+
+
   }, errorHandling);
 });

@@ -30,6 +30,27 @@ var API_WRAPPER = function() {
     });
   };
 
+  this.editBoat = function(boatId, params) {
+    return $.ajax({
+      url:    this.URL_BASE + "/api/boats/" + boatId,
+      method: "PUT",
+      data:   params
+    });
+  };
+
+  this.deleteBoat = function(boatId) {
+    return $.ajax({
+      url:    this.URL_BASE + "/api/boats/" + boatId,
+      method: "DELETE"
+    });
+  };
+
+  this.getMyBookings = function() {
+    return $.ajax({
+      url:    this.URL_BASE + "/api/my/bookings",
+      method: "GET"
+    });
+  };
 };
 
 var API = new API_WRAPPER();

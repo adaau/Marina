@@ -33,4 +33,14 @@ router.get('/boats/:id', function(req, res, next) {
   res.render('boats/show', { boatId });
 });
 
+router.get('/boats/:id/edit', authenticatedUser, function(req, res, next) {
+  var boatId = req.params.id;
+  res.render('boats/edit');
+});
+
+router.get('/boats/:id/delete', authenticatedUser, function(req, res, next) {
+  var boatId = req.params.id;
+  console.log("deleted!");
+  res.render('boats/index');
+});
 
