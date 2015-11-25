@@ -15,7 +15,7 @@ function authenticatedUser(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    return res.json({message: "Please Login"});
+    return res.status(401).json({message: "Please Login"});
   }
 }
 
@@ -28,7 +28,6 @@ router.route('/api/bookings')
   .post(authenticatedUser, function(req, res) {
     var params = req.body.booking;
     params.user_id = req.user._id;
-    // params.boat_id = req.body.booking.id; HIDDEN FIELD automatically updated by jQuery
     Booking.create(params, function(err, booking) {
       if (err) {
         res.send(err);
@@ -36,7 +35,7 @@ router.route('/api/bookings')
       else {
         User.findByIdAndUpdate(req.user._id, {$addToSet: {booking_id: booking._id}}, function(err, user) {
           if (err) {
-            res.send(err)
+            res.status(401).send(err)
           }
           else {
             res.status(200).json(booking);

@@ -24,6 +24,10 @@ router.route('/my/bookings')
     res.render('bookings/index');
   })
 
+router.get('/bookings/new', authenticatedUser, function(req, res, next) {
+  res.render('bookings/new');
+});
+
 router.get('/my/bookings/:id', function(req, res, next) {
   var bookingId = req.params.id;
   res.render('bookings/show', { bookingId} );

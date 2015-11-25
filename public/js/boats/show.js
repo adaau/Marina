@@ -1,5 +1,25 @@
 $(function() {
+  $( "#datepicker" ).datepicker();
+
   var boatId = window.location.pathname.split("/")[2];
+
+  $('#booking').data('id', boatId);
+
+  $('#booking').one('click', function (e) {
+    e.preventDefault();
+
+    var params = {
+      booking: {
+        boat_id: boatId,
+        date: $('#datepicker').val()
+      }
+    }
+
+    API.createBooking(params).then(function (data) {
+      console.log(data);
+      noty({text: "Booking Complete", type: "success", timeout: 3000});
+    }, errorHandling);
+  })
 
   API.getBoat(boatId).then(function(boat) {
     $("#show-boat").append(

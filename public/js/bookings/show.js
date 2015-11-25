@@ -1,7 +1,7 @@
 $(function() {
-  var bookingId = window.location.pathname.split("/")[2];
+  var bookingId = window.location.pathname.split("/")[3];
 
-  API.getBooking(bookingId).then(function(booking) {
+  API.getMyBooking(bookingId).then(function(booking) {
     $("#show-booking").append(
       '<h1>' + booking.date + '</h1>' +
       '<ul>' +

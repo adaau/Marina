@@ -52,13 +52,22 @@ var API_WRAPPER = function() {
     });
   };
 
-  this.getMyBooking = function() {
+  this.getMyBooking = function(bookingId) {
     return $.ajax({
       url:    this.URL_BASE + "/api/my/bookings/" + bookingId,
       method: "GET"
     });
   };
 
+  this.createBooking = function(params) {
+    return $.ajax({
+      url:    this.URL_BASE + "/api/bookings",
+      method: "POSt",
+      data: params
+    })
+  }
+
+  // this.newBooking
 };
 
 var API = new API_WRAPPER();
