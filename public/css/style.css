@@ -1,4 +1,8 @@
 /*General*/
+.container-fluid {
+  padding: 0;
+}
+
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
