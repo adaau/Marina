@@ -28,12 +28,12 @@ $(function() {
         '<img src="/img/' + boat.photoUrl + '">' +
       '</div>' +
       '<ul>' +
-        '<li> Type: '       + boat.type     +         '</li>' +
-        '<li> Make: '       + boat.make     +         '</li>' +
-        '<li> Length: '     + boat.length   + ' feet   </li>' +
-        '<li> Capacity: '   + boat.capacity + ' people </li>' +
-        '<li> Year Built: ' + boat.year     +         '</li>' +
-        '<li> Price: $'     + boat.price    +         '</li>' +
+        '<li><p> Type: '       + boat.type     +         '</p></li>' +
+        '<li><p> Make: '       + boat.make     +         '</p></li>' +
+        '<li><p> Length: '     + boat.length   + ' feet   </p></li>' +
+        '<li><p> Capacity: '   + boat.capacity + ' people </p></li>' +
+        '<li><p> Year Built: ' + boat.year     +         '</p></li>' +
+        '<li><p> Price: $'     + boat.price    +         '</p></li>' +
       '</ul>'
     );
     $("#btn-edit-boat").on('submit', function (e) {
