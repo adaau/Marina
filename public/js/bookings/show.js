@@ -4,11 +4,13 @@ $(function() {
   var bookingId = window.location.pathname.split("/")[3];
 
   API.getMyBooking(bookingId).then(function(booking) {
+    console.log(booking);
+
     $("#show-booking").append(
       '<h1>' + booking.date + '</h1>' +
       '<ul>' +
-        '<li> Boat: '     + booking.boat_id + '</li>' +
-        '<li> Requester: '+ booking.user_id + '</li>' +
+        '<li> Boat: '     + booking.boat_id.name + '</li>' +
+        '<li> Requester: '+ booking.user_id.name + '</li>' +
       '</ul>'
     );
 
@@ -27,11 +29,15 @@ $(function() {
       }, errorHandling);
     })
 
-    $("btn-delete-booking").on('submit', function (e) {
+    $("#btn-delete-booking").on('click', function (e) {
       e.preventDefault();
       API.deleteBooking(booking._id).then(function(data) {
         window.location.href = "/my/bookings";
-        noty({text: "Booking Deleted", type: "success", timeout: 3000});
+        noty({
+          text: "Booking Deleted",
+          type: "success",
+          timeout: 3000
+        });
       }, errorHandling);
     })
   }, errorHandling);

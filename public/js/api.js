@@ -77,7 +77,7 @@ var API_WRAPPER = function() {
 
   this.deleteBooking = function(bookingId) {
     return $.ajax({
-      url:    this.URL_BASE + "api/my/bookings" + bookingId,
+      url:    this.URL_BASE + "/api/my/bookings/" + bookingId,
       method: "DELETE"
     });
   };

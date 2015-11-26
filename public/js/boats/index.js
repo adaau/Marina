@@ -9,6 +9,7 @@ $(function() {
             '<div class="container-info">' +
               '<h5><a href="/boats/'+ boat._id + '">' + boat.name + '</a></h5>' +
               '<h6>Capacity: ' + boat.capacity + '</h6>' +
+              '<h6>Price / Day: ' + boat.price + '</h6>' +
             '</div>' +
           '</div>' +
         '</li>')

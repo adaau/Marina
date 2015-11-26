@@ -13,7 +13,8 @@ $(function(){
           make        : $('#boat-make').val(),
           length      : $('#boat-length').val(),
           year        : $('#boat-year').val(),
-          photoUrl    : $('#boat-photoUrl').val()
+          photoUrl    : $('#boat-photoUrl').val(),
+          price       : $('#boat-price').val()
         }
       };
 

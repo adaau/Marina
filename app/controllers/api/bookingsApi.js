@@ -72,7 +72,7 @@ router.route('/api/my/bookings/:id')
           res.status(403).json({message: "You are not authorized to view this booking."});
         }
       }
-    });
+    }).populate("user_id").populate("boat_id");
   })
 
   .put(authenticatedUser, function(req, res) {

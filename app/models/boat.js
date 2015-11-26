@@ -19,8 +19,4 @@ var boatSchema = new Schema ({
   booking_id  : [{ type: Schema.Types.ObjectId, ref: 'Booking'}]
 });
 
-boatSchema.methods.showPhoto = function() {
-  return '/img/' + this.photoUrl;
-};
-
 module.exports = mongoose.model('Boat', boatSchema);

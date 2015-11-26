@@ -22,12 +22,13 @@ function authenticatedUser(req, res, next) {
 // GET Index of all bookings (of my boats)
 router.route('/api/my/boats/bookings')
   .get(authenticatedUser, function (req, res, next) {
-    Boat.find({user_id: req.user, booking_id: {$ne: null}}, function(err, boats) {
+    Boat.find({user_id: req.user}.exists('booking_id', true).exec(function(err, boats) {
       if (err) {
         res.status(400).send(err);
       }
       else {
         res.status(200).json(boats)
       }
-    });
+    }));
   });
+

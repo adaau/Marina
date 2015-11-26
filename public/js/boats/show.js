@@ -24,16 +24,16 @@ $(function() {
   API.getBoat(boatId).then(function(boat) {
     $("#show-boat").append(
       '<h1>' + boat.name + '</h1>' +
-      // '<div class="container-img">' +
-      //   '<img src="'boat.showPhoto()'">' +
-      // '</div>' +
+      '<div class="container-img">' +
+        '<img src="/img/' + boat.photoUrl + '">' +
+      '</div>' +
       '<ul>' +
-        '<li> Type: '     + boat.type + '</li>' +
-        '<li> Make: '     + boat.make + '</li>' +
-        '<li> Length: '   + boat.length + '</li>' +
-        '<li> Capacity: ' + boat.capacity + '</li>' +
-        '<li> Year: '     + boat.year + '</li>' +
-        '<li> Price: '    + boat.price + '</li>' +
+        '<li> Type: '       + boat.type     +         '</li>' +
+        '<li> Make: '       + boat.make     +         '</li>' +
+        '<li> Length: '     + boat.length   + ' feet   </li>' +
+        '<li> Capacity: '   + boat.capacity + ' people </li>' +
+        '<li> Year Built: ' + boat.year     +         '</li>' +
+        '<li> Price: $'     + boat.price    +         '</li>' +
       '</ul>'
     );
     $("#btn-edit-boat").on('submit', function (e) {

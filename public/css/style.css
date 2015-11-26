@@ -29,7 +29,7 @@ p {
 }
 
 @media only screen and (max-width: 400px) {
-  body {font-size: 90%;}
+  body {font-size: 100%;}
 }
 
 @media only screen and (min-width: 400px) {
@@ -68,7 +68,7 @@ nav.navbar-default .navbar-nav>li>a.hover {
     color: #000080;
 }
 
-nav div.navbar-header { /* Centers brand logo on navbar */
+nav div.navbar-header {
    left: 50%;
    position: relative;
    transform: translateX(-50%);
@@ -184,4 +184,18 @@ div#show div.container-img img {
 
 div#show ul {
   list-style-type: none;
+}
+
+div#show div.inline {
+  float: left;
+  margin-right: 10px;
+}
+
+div#show div.date-box {
+  margin-top: 100px;
+}
+
+div#show button#btn-booking {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
