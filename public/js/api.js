@@ -63,15 +63,22 @@ var API_WRAPPER = function() {
     return $.ajax({
       url:    this.URL_BASE + "/api/bookings",
       method: "POST",
-      data: params
+      data:   params
     });
   };
 
   this.editMyBooking = function(bookingId, params) {
     return $.ajax({
-      url: this.URL_BASE + "/api/my/bookings/" + bookingId,
+      url:    this.URL_BASE + "/api/my/bookings/" + bookingId,
       method: "PUT",
-      data: params
+      data:   params
+    });
+  };
+
+  this.deleteBooking = function(bookingId) {
+    return $.ajax({
+      url:    this.URL_BASE + "api/my/bookings" + bookingId,
+      method: "DELETE"
     });
   };
 

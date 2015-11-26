@@ -30,12 +30,12 @@ router.route('/api/bookings')
     params.user_id = req.user._id;
     Booking.create(params, function(err, booking) {
       if (err) {
-        res.send(err);
+        res.status(401).send(err);
       }
       else {
         User.findByIdAndUpdate(req.user._id, {$addToSet: {booking_id: booking._id}}, function(err, user) {
           if (err) {
-            res.status(401).send(err)
+            res.status(403).send(err)
           }
           else {
             res.status(200).json(booking);
@@ -50,7 +50,7 @@ router.route('/api/my/bookings')
   .get(authenticatedUser, function(req, res) {
     Booking.find({user_id: req.user}, function(err, bookings) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         res.status(200).json(bookings)
@@ -62,7 +62,7 @@ router.route('/api/my/bookings/:id')
   .get(authenticatedUser, function(req, res) {
     Booking.findOne( {_id: req.params.id, user_id: req.user._id}, function(err, booking) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         if (booking) {
@@ -78,7 +78,7 @@ router.route('/api/my/bookings/:id')
   .put(authenticatedUser, function(req, res) {
     Booking.findOneAndUpdate({_id: req.params.id, user_id: req.user._id}, req.body.booking, function (err, booking) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         if (booking){
@@ -94,7 +94,7 @@ router.route('/api/my/bookings/:id')
   .delete(authenticatedUser, function(req, res) {
     Booking.findOneAndRemove({_id: req.params.id, user_id: req.user._id}, function (err, booking) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         if (booking){

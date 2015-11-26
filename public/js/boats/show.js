@@ -45,6 +45,8 @@ $(function() {
       e.preventDefault();
       API.deleteBoat(boat._id).then(function(data){
         window.location.href = "/boats";
+        noty({text: "Boat Deleted", type: "success", timeout: 3000});
+
       }, errorHandling);
     })
   }, errorHandling);

@@ -28,7 +28,7 @@ router.route('/api/boats')
   .get(function (req, res, next) {
     Boat.find(function(err, boats) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         res.status(200).json(boats)
@@ -42,12 +42,12 @@ router.route('/api/boats')
     params.user_id = req.user._id;
     Boat.create(params, function(err, boat) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         User.findByIdAndUpdate(req.user._id, {$addToSet:{boat_id: boat._id}}, function(err, user) {
           if (err) {
-            res.send(err);
+            res.status(403).send(err);
           }
           else {
             // res.json({message: "Boat created; boat saved in user"});
@@ -63,7 +63,7 @@ router.route('/api/boats/:id')
   .get(function (req, res) {
     Boat.findById(req.params.id, function(err, boat) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         res.status(200).json(boat)
@@ -80,7 +80,7 @@ router.route('/api/boats/:id')
     //     if (String(req.user._id) == String(user._id)) {
     Boat.findOneAndUpdate({_id: req.params.id, user_id: req.user._id}, req.body.boat, function (err, boat) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         if (boat){
@@ -94,11 +94,9 @@ router.route('/api/boats/:id')
 
   // delete the boat with this id (accessed at DELETE http://localhost:3000/api/my/boats/:id)
   .delete(authenticatedUser, function(req, res) {
-    console.log("delete")
     Boat.findOneAndRemove({_id: req.params.id, user_id: req.user._id}, function (err, boat) {
-      console.log(boat);
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         if (boat){
@@ -115,7 +113,7 @@ router.route('/api/my/boats')
   .get(authenticatedUser, function (req, res, next) {
     Boat.find({user_id: req.user}, function(err, boats) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         res.status(200).json(boats)
@@ -129,7 +127,7 @@ router.route('/api/my/boats/:id')
   .get(authenticatedUser, function(req, res) {
     Boat.findOne( {_id: req.params.id, user_id: req.user._id}, function(err, boat) {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       }
       else {
         if (boat) {
