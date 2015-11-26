@@ -55,7 +55,7 @@ router.route('/api/my/bookings')
       else {
         res.status(200).json(bookings)
       }
-    });
+    }).populate("user_id").populate("boat_id");
   });
 
 router.route('/api/my/bookings/:id')

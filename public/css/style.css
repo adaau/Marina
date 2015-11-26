@@ -21,6 +21,10 @@ h2 {
   font-weight: bold;
 }
 
+h5 {
+  font-size: 18px;
+  font-weight: bold;
+}
 
 h6 {
   font-size: 15px;
@@ -48,7 +52,6 @@ p {
 
 a {
   color: #0099ff;
-  font-size: 17px;
 }
 
 a:hover,

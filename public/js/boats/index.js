@@ -10,7 +10,7 @@ $(function() {
               '</a>' +
             '</div>' +
             '<div class="container-info">' +
-              '<h5><a href="/boats/'+ boat._id + '">' + boat.name + '</a></h5>' +
+              '<h5>' + boat.name + '</h5>' +
               '<p>Capacity: ' + boat.capacity + '</p>' +
               '<p>Price / Day: $' + boat.price + '</p>' +
             '</div>' +
