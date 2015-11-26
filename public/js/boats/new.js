@@ -1,10 +1,10 @@
 $(function(){
-  var submitted = false;
+  // var submitted = false;
 
   $('#new-boat').on('submit', function (e) {
     e.preventDefault();
 
-    if (!submitted) {
+    // if (!submitted) {
       var params = {
         boat: {
           name        : $('#boat-name').val(),
@@ -19,12 +19,14 @@ $(function(){
 
       API.createBoat(params).then(function (boat) {
         window.location.href = "/boats/" + boat._id;
-      }, function (error) {
-        submitted = false;
-      });
+      }, errorHandling
+      // function (error) {
+      //   submitted = false;
+      // }
+      );
 
-      submitted = true;
-    }
+      // submitted = true;
+    // }
   })
 
 });

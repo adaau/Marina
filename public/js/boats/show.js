@@ -1,11 +1,11 @@
 $(function() {
-  $( "#datepicker" ).datepicker();
+  $("#datepicker").datepicker();
 
   var boatId = window.location.pathname.split("/")[2];
 
-  $('#booking').data('id', boatId);
+  $('#btn-booking').data('id', boatId);
 
-  $('#booking').one('click', function (e) {
+  $('#btn-booking').one('click', function (e) {
     e.preventDefault();
 
     var params = {

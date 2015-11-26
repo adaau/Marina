@@ -1,6 +1,7 @@
 $(function() {
-  var bookingId = window.location.pathname.split("/")[3];
+  $("#datepicker-edit").datepicker();
 
+  var bookingId = window.location.pathname.split("/")[3];
   API.getMyBooking(bookingId).then(function(booking) {
     $("#show-booking").append(
       '<h1>' + booking.date + '</h1>' +
@@ -9,14 +10,21 @@ $(function() {
         '<li> Requester: '+ booking.user_id + '</li>' +
       '</ul>'
     );
-    // $("#btn-edit-booking").on('submit', function (e) {
-    //   e.preventDefault();
-    //   window.location.href = "/bookings/" + booking._id + "/edit";
-
-    // })
-    // $("#btn-delete-booking").on('submit', function (e) {
-    //   e.preventDefault();
-    //   window.location.href = "/bookings/" + booking._id + "/delete";
-    // })
   }, errorHandling);
+
+  $("#btn-booking-edit").one('click', function (e) {
+    e.preventDefault();
+
+    var params = {
+      booking: {
+        date: $('#datepicker-edit').val()
+      }
+    };
+
+    API.editMyBooking(bookingId, params).then(function (booking) {
+      window.location.href = "/my/bookings/";
+      noty({text: "Booking Changed", type: "success", timeout: 3000});
+    }, errorHandling);
+  })
+
 });

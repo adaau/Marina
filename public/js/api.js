@@ -62,12 +62,19 @@ var API_WRAPPER = function() {
   this.createBooking = function(params) {
     return $.ajax({
       url:    this.URL_BASE + "/api/bookings",
-      method: "POSt",
+      method: "POST",
       data: params
-    })
-  }
+    });
+  };
 
-  // this.newBooking
+  this.editMyBooking = function(bookingId, params) {
+    return $.ajax({
+      url: this.URL_BASE + "/api/my/bookings/" + bookingId,
+      method: "PUT",
+      data: params
+    });
+  };
+
 };
 
 var API = new API_WRAPPER();
