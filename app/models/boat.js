@@ -14,12 +14,9 @@ var boatSchema = new Schema ({
   length      : Number,
   year        : { type: Number, min: 1980, max: 2016 },
   photoUrl    : { type: String},
+  price       : Number,
   user_id     : { type: Schema.Types.ObjectId, ref: 'User'},
   booking_id  : [{ type: Schema.Types.ObjectId, ref: 'Booking'}]
 });
-
-boatSchema.methods.showPhoto = function() {
-  return '/img/' + this.photoUrl;
-};
 
 module.exports = mongoose.model('Boat', boatSchema);

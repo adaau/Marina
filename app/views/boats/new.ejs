@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <h1>Add a Boat</h1>
+    <form id="new-boat">
+      <div class="form-group">
+        <input id="boat-name" name="boat[name]" type="text" placeholder="Descriptive Listing Name*" maxlength="35" class="form-control">
+      </div>
+      <div class="form-group">
+        <select id="boat-type" name="boat[type]" class="form-control">
+          <option value="" disabled="disabled" selected="selected">Select a Type*</option>
+          <option value="Junk Boat">Junk Boat</option>
+          <option value="Sail Boat">Sail Boat</option>
+          <option value="Yacht">Yacht</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input id="boat-capacity" name="boat[capacity]" type="number" placeholder="Capacity (number of people)*" class="form-control">
+      </div>
+      <div class="form-group">
+        <input id="boat-make" name="boat[make]" type="text" placeholder="Make" class="form-control">
+      </div>
+      <div class="form-group">
+        <input id="boat-length" name="boat[length]" type="number" placeholder="Length (feet)" class="form-control">
+      </div>
+      <div class="form-group">
+        <select id="boat-year" name="boat[year]" class="form-control">
+          <option value="" disabled="disabled" selected="selected">Year Built</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+          <option value="2006">2006</option>
+          <option value="2005">2005</option>
+          <option value="2004">2004</option>
+          <option value="2003">2003</option>
+          <option value="2002">2002</option>
+          <option value="2001">2001</option>
+          <option value="2000">2000</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input id="boat-photoUrl" name="boat[photoUrl]" type="text" placeholder="Photo URL*" class="form-control">
+      </div>
+      <div class="form-group">
+        <input id="boat-price" name="boat[price]" type="text" placeholder="Price / Day" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/boats/new.js"></script>
