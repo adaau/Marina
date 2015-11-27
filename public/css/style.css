@@ -19,13 +19,23 @@ h6 {
 h1,
 h2 {
   font-weight: bold;
+}
 
+h5 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+h6 {
+  font-size: 15px;
+  margin-bottom: 0;
 }
 
 p {
-  font-size: 120%;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1;
   font-family: 'Merriweather', serif;
+  margin-bottom: 5px;
 }
 
 @media only screen and (max-width: 400px) {
@@ -33,7 +43,7 @@ p {
 }
 
 @media only screen and (min-width: 400px) {
-  body {font-size: 100%;}
+  body {font-size: 110%;}
 }
 
 @media only screen and (min-width: 800px) {
@@ -159,8 +169,8 @@ div#index div.thumb {
     margin-bottom: 30px;
 }
 
-div#index div.container-img>a>img {
-  height: 180px;
+div#index div.container-img>img {
+  height: 200px;
   width: 100%;
   /*overflow: hidden;*/
 }
@@ -184,6 +194,9 @@ div#show div.container-img img {
 
 div#show ul {
   list-style-type: none;
+  padding-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 div#show div.inline {
@@ -198,4 +211,13 @@ div#show div.date-box {
 div#show button#btn-booking {
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+div#show-boat {
+  margin-bottom: 10px;
+}
+
+/*Sign up | Log in*/
+div.sign-up-msg {
+  margin-top: 10px;
 }

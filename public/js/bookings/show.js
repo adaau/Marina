@@ -4,10 +4,10 @@ $(function() {
   var bookingId = window.location.pathname.split("/")[3];
 
   API.getMyBooking(bookingId).then(function(booking) {
-    console.log(booking);
-
+  var unformattedDate = new Date(booking.date);
+  var formattedDate = unformattedDate.toDateString();
     $("#show-booking").append(
-      '<h1>' + booking.date + '</h1>' +
+      '<h1>' + formattedDate + '</h1>' +
       '<ul>' +
         '<li> Boat: '     + booking.boat_id.name + '</li>' +
         '<li> Requester: '+ booking.user_id.name + '</li>' +
