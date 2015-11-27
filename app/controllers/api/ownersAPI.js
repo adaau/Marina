@@ -24,11 +24,10 @@ router.route('/api/my/boats/bookings')
   .get(authenticatedUser, function (req, res, next) {
     Boat.find({user_id: req.user}.exists('booking_id', true).exec(function(err, boats) {
       if (err) {
-        res.status(400).send(err);
+        res.status(401).send(err);
       }
       else {
         res.status(200).json(boats)
       }
     }));
   });
-

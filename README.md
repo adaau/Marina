@@ -1,7 +1,9 @@
 #About
-MARINA is a boat-sharing app to connect boat owners and boat renters.
+MARINA is a boat-sharing app to connect boat owners and boat renters. It can be found at https://marina-app.herokuapp.com
 
 The premise behind this "sharing economy" app is to create a marketplace for boats: owners, who seldom use their boats, can monetize their boats during idle time and offset some of the huge operating costs; renters, who don't have access to boats, can now have access to a huge supply of boats.
+
+This was a solo project created while I was a student in General Assembly's Web Development Immersive course.
 
 #Features
 ###Owners can:
